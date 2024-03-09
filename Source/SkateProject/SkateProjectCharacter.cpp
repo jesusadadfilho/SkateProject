@@ -80,10 +80,7 @@ void ASkateProjectCharacter::SetupPlayerInputComponent(UInputComponent* PlayerIn
 		// Jumping
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Started, this, &ACharacter::Jump);
 		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
-
-		EnhancedInputComponent->BindAction(CrouchAction, ETriggerEvent::Started, this, &ASkateProjectCharacter::Crouch);
-		EnhancedInputComponent->BindAction(CrouchAction, ETriggerEvent::Completed, this, &ASkateProjectCharacter::StopCrouch);
-
+		
 		// Moving
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ASkateProjectCharacter::Move);
 
@@ -130,17 +127,4 @@ void ASkateProjectCharacter::Look(const FInputActionValue& Value)
 		AddControllerYawInput(LookAxisVector.X);
 		AddControllerPitchInput(LookAxisVector.Y);
 	}
-}
-
-void ASkateProjectCharacter::Crouch()
-{
-	if(this->GetVelocity().Z == 0)
-	{
-		this->IsCrouching = true;
-	}
-}
-
-void ASkateProjectCharacter::StopCrouch()
-{
-	this->IsCrouching = false;
 }

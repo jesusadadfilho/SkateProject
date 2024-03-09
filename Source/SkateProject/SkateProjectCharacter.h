@@ -48,10 +48,11 @@ class ASkateProjectCharacter : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* LookAction;
 
-	UPROPERTY(VisibleAnywhere)
-	bool IsCrouching;
 
 public:
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	bool IsCrouching;
+	
 	ASkateProjectCharacter();
 	
 
@@ -63,9 +64,6 @@ protected:
 	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
 	
-	void Crouch();
-	
-	void StopCrouch();
 			
 
 protected:
